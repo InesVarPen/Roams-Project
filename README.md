@@ -8,7 +8,7 @@ Incluye documentación interactiva con **Swagger** y permite activarlo o desacti
 
 ## 📂 **Estructura del Proyecto**
 ```
-📁 tu_proyecto  
+📁proyecto  
  ├── 📄 app.py               # Código principal de la API  
  ├── 📄 app_swagger.py       # Versión con Swagger   
  ├── 📂 templates/           # Plantillas HTML  

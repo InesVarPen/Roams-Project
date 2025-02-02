@@ -51,7 +51,7 @@ def init_db():
 init_db()
 
 
-# Diccionario de usuarios y contraseñas (simulado)
+# Diccionario de usuarios y contraseñas
 USER_CREDENTIALS = {
     "root": "toor",
     "ines": "12345"

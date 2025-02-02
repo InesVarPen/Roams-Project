@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .back-button, .filter-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            background-color: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .filter-button:hover {
+            background-color: #1c2e5e;
+        }
+    </style>
+</head>
+<body>
+    <h2>Historial de Logs</h2>
+
+    <div class="container">
+        <label for="model-filter">Filtrar por modelo:</label>
+        <select id="model-filter" onchange="filterLogs()">
+            <option value="all" {% if model_filter == 'all' %}selected{% endif %}>Todos</option>
+            <option value="gpt2-spanish" {% if model_filter == 'gpt2-spanish' %}selected{% endif %}>GPT-2 Español</option>
+            <option value="gpt2-english" {% if model_filter == 'gpt2-english' %}selected{% endif %}>GPT-2 Inglés</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <th>Modelo</th>
+            <th>Prompt</th>
+            <th>Máx Longitud</th>
+            <th>Temperatura</th>
+            <th>Top P</th>
+            <th>Texto Generado</th>
+            <th>Fecha</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log[0] }}</td>
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+            <td>{{ log[4] }}</td>
+            <td>{{ log[5] }}</td>
+            <td>{{ log[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="container">
+        <a href="/" class="back-button">Volver</a>
+    </div>
+
+    <script>
+        function filterLogs() {
+            const selectedModel = document.getElementById("model-filter").value;
+            window.location.href = "/logs?model=" + selectedModel;
+        }
+    </script>
+
+</body>
+</html>

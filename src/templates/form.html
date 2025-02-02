@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Texto IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container, .output-container {
+            flex: 1;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .form-container {
+            background-color: #e3e8f0;
+        }
+        label {
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #1c2e5e;
+        }
+        .output-container {
+            background-color: #ffffff;
+            text-align: left;
+        }
+        .output-box {
+            background: #f4f6f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+        }
+        .log-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .log-button:hover {
+            background-color: #1c2e5e;
+        }
+        .logout-button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .logout-button:hover {
+            background-color: darkred;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1e3a8a;
+            color: white;
+            font-size: 14px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>Generador de Texto con IA</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Introduce los Datos</h2>
+        <form action="/submit" method="POST">
+            <label for="model">Seleccionar modelo:</label>
+            <select id="model" name="model">
+                <option value="gpt2-spanish">GPT-2 Español</option>
+                <option value="gpt2-english">GPT-2 Inglés</option>
+            </select>
+            
+            <label for="prompt">Prompt:</label>
+            <textarea id="prompt" name="prompt" rows="4" cols="50" required></textarea>
+            
+            <label for="max_length">Máxima longitud:</label>
+            <input type="number" id="max_length" name="max_length" value="100">
+            
+            <label for="temperature">Temperatura:</label>
+            <input type="number" id="temperature" name="temperature" step="0.1" value="0.7">
+            
+            <label for="top_p">Top P:</label>
+            <input type="number" id="top_p" name="top_p" step="0.1" value="0.9">
+            
+            <button type="submit">Generar Texto</button>
+        </form>
+    </div>
+
+    <div class="output-container">
+        <h2>Texto Generado</h2>
+        {% if error %}
+        <div style="color: red;">
+            <p><strong>Error:</strong> {{ error }}</p>
+        </div>
+        {% endif %}
+        
+        {% if generated_text %}
+        <p><strong>Prompt:</strong> {{ prompt }}</p>
+        <p><strong>Máxima longitud:</strong> {{ max_length }}</p>
+        <p><strong>Temperatura:</strong> {{ temperature }}</p>
+        <p><strong>Top P:</strong> {{ top_p }}</p>
+        <div class="output-box">
+            <p>{{ generated_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<a href="/logs" class="log-button">Ver Historial de Logs</a>
+<a href="{{ url_for('logout') }}" class="logout-button">Cerrar Sesión</a>
+
+<footer>
+    Creado por Inés Varona - Todos los derechos reservados © 2025
+</footer>
+
+</body>
+</html>

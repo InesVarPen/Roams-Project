@@ -45,15 +45,15 @@ pip install -r requirements.txt
 ### **4️⃣ Configurar las variables de entorno**
 Antes de ejecutar la API, necesitas configurar las variables de entorno.
 
-1️⃣ Copia el archivo `.env.example` y renómbralo como `.env`:
+1️⃣ Copia el archivo `env_example` y renómbralo como `.env`:
 ```bash
-cp .env.example .env
+cp env_example.txt .env
 ```
 2️⃣ Abre `.env` y edita los valores según sea necesario:
 ```ini
 SECRET_KEY=supersecretkey
 DEBUG=True
-DATABASE_NAME=logs.db
+DATABASE_NAME=/database/logs.db
 ```
 ---
 

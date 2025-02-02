@@ -1,0 +1,11 @@
+# Clave secreta para la sesión de Flask
+SECRET_KEY=supersecretkey
+
+# Configuración del entorno (True para desarrollo, False para producción)
+DEBUG=True
+
+# Modelos disponibles (puedes modificar según necesidades)
+DEFAULT_MODEL=gpt2-spanish
+
+# Configuración de la base de datos (aunque se crea automáticamente, puedes configurarla si decides usar una externa)
+DATABASE_NAME=logs.db

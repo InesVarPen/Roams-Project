@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import sqlite3
 import re
-from flasgger import Swagger  # 📌 Importamos Swagger
+from flasgger import Swagger  
 
 # Cargar variables de entorno
 load_dotenv()
@@ -16,15 +16,15 @@ app = Flask(__name__)
 app.config["SWAGGER"] = {
     "title": "API de Generación de Texto",
     "description": """
-    🚀 **API de Generación de Texto**  
+    **API de Generación de Texto**  
     Esta API permite la autenticación de usuarios y la generación de texto con modelos de lenguaje de Hugging Face.  
 
-    📌 **Endpoints disponibles:**  
+    **Endpoints disponibles:**  
     - **Autenticación:** `/login`, `/logout`  
     - **Generación de Texto:** `/submit`  
     - **Logs de actividad:** `/logs`  
 
-    🔗 **Swagger UI:** [http://127.0.0.1:5000/apidocs](http://127.0.0.1:5000/apidocs)
+    **Swagger UI:** [http://127.0.0.1:5000/apidocs](http://127.0.0.1:5000/apidocs)
     """,
     "version": "1.0.0"
 }

@@ -102,37 +102,6 @@ Si el login es exitoso, la sesión se almacenará y podrás acceder al formulari
 
 📌 **Puedes probar estos endpoints directamente en `http://127.0.0.1:5000/apidocs`.**
 
----
-
-## 📝 **Cómo Configurar `.gitignore`**
-Para evitar subir archivos innecesarios o sensibles a GitHub, crea un archivo llamado **`.gitignore`** en la raíz del proyecto y añade lo siguiente:
-
-```ini
-# Ignorar entorno virtual
-env/
-venv/
-
-# Archivos de configuración sensibles
-.env
-
-# Caché de Python
-__pycache__/
-*.pyc
-*.pyo
-
-# Bases de datos locales
-database/*.db
-
-# Logs
-logs/
-*.log
-```
-Esto asegurará que no subas archivos sensibles ni innecesarios a GitHub.
-
-📌 **Para verificar qué archivos serán ignorados, ejecuta en la terminal:**
-```bash
-git status --ignored
-```
 
 ## 📝 **Tecnologías utilizadas**
 - Python 3.x
